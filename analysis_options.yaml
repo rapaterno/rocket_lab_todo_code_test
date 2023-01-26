@@ -1,0 +1,66 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    - require_trailing_commas
+
+analyzer:
+  plugins:
+    - dart_code_metrics
+  errors:
+    deprecated_member_use: ignore
+    invalid_null_aware_operator: ignore
+    unnecessary_null_comparison: ignore
+    always_require_non_null_named_parameters: ignore
+    avoid_init_to_null: ignore
+    avoid_null_checks_in_equality_operators: ignore
+    avoid_returning_null_for_void: ignore
+    null_closures: ignore
+    prefer_if_null_operators: ignore
+    prefer_null_aware_operators: ignore
+    prefer_void_to_null: ignore
+    unnecessary_null_aware_assignments: ignore
+    unnecessary_null_in_if_null_operators: ignore
+    unnecessary_nullable_for_final_variable_declarations: ignore
+    import_of_legacy_library_into_null_safe: ignore
+    avoid_web_libraries_in_flutter: ignore
+  
+  exclude:
+    - "**/*.freezed.dart"
+    - "**/*.mocks.dart"
+    - "**/l10n/generated/**/*"
+    - "**/*localizations.dart"
+
+dart_code_metrics:
+  metrics:
+    cyclomatic-complexity: 20
+    number-of-parameters: 20
+    maximum-nesting-level: 5
+    maintainability-index: 45
+    lines-of-code: 100
+    source-lines-of-code: 150
+    technical-debt:
+      threshold: 1
+      todo-cost: 161
+      ignore-cost: 320
+      ignore-for-file-cost: 396
+      as-dynamic-cost: 322
+      deprecated-annotations-cost: 37
+      file-nullsafety-migration-cost: 41
+      unit-type: "USD"
+  metrics-exclude:
+    - "**/*.freezed.dart"
+    - "**/*.mocks.dart"
+    - "**/l10n/generated/**/*"
+    - "**/*localizations.dart"
+
+  rules:
+    - no-boolean-literal-compare
+    - no-equal-then-else
+    - binary-expression-operand-order
+    - double-literal-format
+    - always-remove-listener
+
+  anti-patterns:
+    - long-method
+    - long-parameter-list
