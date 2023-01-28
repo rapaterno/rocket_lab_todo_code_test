@@ -41,4 +41,16 @@ class TodoLocalizationsEn extends TodoLocalizations {
 
   @override
   String get nameIsEmpty => 'Name is empty';
+
+  @override
+  String get deleteTodo => 'Delete Todo';
+
+  @override
+  String get areYouSureYouWantToDelete => 'Are you sure you want to delete this todo?';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get yes => 'Yes';
 }

@@ -26,4 +26,6 @@ abstract class TodoKeys {
 
   static String confirmButton = 'Confirm Button';
   static String cancelButton = 'Cancel Button';
+
+  static String deleteButton = 'Delete Button';
 }

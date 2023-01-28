@@ -19,5 +19,11 @@
     "addTodo": "Add Todo",
     "editTodo": "Edit Todo",
     "save": "Save",
-    "nameIsEmpty": "Name is empty"
+    "nameIsEmpty": "Name is empty",
+
+    "deleteTodo": "Delete Todo",
+    "areYouSureYouWantToDelete": "Are you sure you want to delete this todo?",
+    "cancel": "Cancel",
+    "yes": "Yes"
+
 }

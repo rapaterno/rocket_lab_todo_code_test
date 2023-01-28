@@ -46,6 +46,16 @@ class AddEditTodoScreenState extends State<AddEditTodoScreen> {
       key: Key(isEdit ? TodoKeys.editScreen : TodoKeys.addScreen),
       appBar: AppBar(
         title: Text(isEdit ? localizations.editTodo : localizations.addTodo),
+        actions: [
+          if (isEdit)
+            IconButton(
+              key: Key(TodoKeys.deleteButton),
+              onPressed: () async {
+                await showDeleteDialog(context);
+              },
+              icon: const Icon(Icons.delete),
+            )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
@@ -61,6 +71,31 @@ class AddEditTodoScreenState extends State<AddEditTodoScreen> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Future<dynamic> showDeleteDialog(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(localizations.deleteTodo),
+        content: Text(localizations.areYouSureYouWantToDelete),
+        actions: [
+          TextButton(
+            key: Key(TodoKeys.cancelButton),
+            onPressed: () => Navigator.of(context).pop<bool>(false),
+            child: Text(localizations.cancel),
+          ),
+          TextButton(
+            key: Key(TodoKeys.confirmButton),
+            onPressed: () {
+              cubit.deleteTodo(todo!.id);
+              Navigator.pop(context);
+            },
+            child: Text(localizations.yes),
+          ),
+        ],
       ),
     );
   }

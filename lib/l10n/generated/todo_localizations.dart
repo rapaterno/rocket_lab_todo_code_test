@@ -162,6 +162,30 @@ abstract class TodoLocalizations {
   /// In en, this message translates to:
   /// **'Name is empty'**
   String get nameIsEmpty;
+
+  /// No description provided for @deleteTodo.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Todo'**
+  String get deleteTodo;
+
+  /// No description provided for @areYouSureYouWantToDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this todo?'**
+  String get areYouSureYouWantToDelete;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @yes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get yes;
 }
 
 class _TodoLocalizationsDelegate extends LocalizationsDelegate<TodoLocalizations> {
