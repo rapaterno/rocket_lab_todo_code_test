@@ -1,0 +1,18 @@
+{
+    "@@locale": "en",
+    "todoList": "Todo List",
+    "total": "Total",
+    "completed": "Completed",
+    "createdAt": "Created At",
+    "name": "Name",
+    "priority": "Priority",
+    "sortBy": "Sort By",
+    "errorMessage": "Error: {errorMessage}",
+    "@errorMessage": {
+      "placeholders": {
+        "errorMessage": {
+          "type": "String"
+        }
+      }
+    }
+}

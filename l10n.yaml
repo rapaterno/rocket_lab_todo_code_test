@@ -1,0 +1,7 @@
+arb-dir: lib/l10n/
+output-dir: lib/l10n/generated/
+template-arb-file: app_en.arb
+output-class: TodoLocalizations
+output-localization-file: todo_localizations.dart
+synthetic-package: false
+untranslated-messages-file: lib/l10n/generated/untranslated-messages.json
