@@ -14,5 +14,10 @@
           "type": "String"
         }
       }
-    }
+    },
+
+    "addTodo": "Add Todo",
+    "editTodo": "Edit Todo",
+    "save": "Save",
+    "nameIsEmpty": "Name is empty"
 }

@@ -12,4 +12,18 @@ abstract class TodoKeys {
   static String sortByDropdown = 'Sort By Dropdown';
   static String sortByDropdownMenuItem(String sortBy) =>
       'Sort By Dropdown Menu Item - $sortBy';
+
+  //Add Edit Screen
+  static String editScreen = 'Edit Screen';
+  static String addScreen = 'Add Screen';
+  static String saveButton = 'Save Button';
+
+  static String nameTextField = 'Name TextField';
+
+  static String priorityDropdownField = 'Priority Dropdown Field';
+  static String priorityDropdownMenuItem(String priority) =>
+      'Priority Dropdown Menu Item - $priority';
+
+  static String confirmButton = 'Confirm Button';
+  static String cancelButton = 'Cancel Button';
 }

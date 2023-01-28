@@ -29,4 +29,16 @@ class TodoLocalizationsEn extends TodoLocalizations {
   String errorMessage(String errorMessage) {
     return 'Error: $errorMessage';
   }
+
+  @override
+  String get addTodo => 'Add Todo';
+
+  @override
+  String get editTodo => 'Edit Todo';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get nameIsEmpty => 'Name is empty';
 }

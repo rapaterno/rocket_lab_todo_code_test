@@ -138,6 +138,30 @@ abstract class TodoLocalizations {
   /// In en, this message translates to:
   /// **'Error: {errorMessage}'**
   String errorMessage(String errorMessage);
+
+  /// No description provided for @addTodo.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Todo'**
+  String get addTodo;
+
+  /// No description provided for @editTodo.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Todo'**
+  String get editTodo;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @nameIsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Name is empty'**
+  String get nameIsEmpty;
 }
 
 class _TodoLocalizationsDelegate extends LocalizationsDelegate<TodoLocalizations> {
