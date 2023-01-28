@@ -28,4 +28,5 @@ abstract class TodoKeys {
   static String cancelButton = 'Cancel Button';
 
   static String deleteButton = 'Delete Button';
+  static String nameIsEmpty = 'Name is empty';
 }
