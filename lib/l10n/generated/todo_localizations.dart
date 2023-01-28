@@ -186,6 +186,18 @@ abstract class TodoLocalizations {
   /// In en, this message translates to:
   /// **'Yes'**
   String get yes;
+
+  /// No description provided for @discardChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Discard Changes'**
+  String get discardChanges;
+
+  /// No description provided for @yourProgressWillBeLost.
+  ///
+  /// In en, this message translates to:
+  /// **'Your progress will be lost if you go back. Do you want to proceed?'**
+  String get yourProgressWillBeLost;
 }
 
 class _TodoLocalizationsDelegate extends LocalizationsDelegate<TodoLocalizations> {

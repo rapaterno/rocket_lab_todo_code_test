@@ -53,4 +53,10 @@ class TodoLocalizationsEn extends TodoLocalizations {
 
   @override
   String get yes => 'Yes';
+
+  @override
+  String get discardChanges => 'Discard Changes';
+
+  @override
+  String get yourProgressWillBeLost => 'Your progress will be lost if you go back. Do you want to proceed?';
 }

@@ -42,35 +42,63 @@ class AddEditTodoScreenState extends State<AddEditTodoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: Key(isEdit ? TodoKeys.editScreen : TodoKeys.addScreen),
-      appBar: AppBar(
-        title: Text(isEdit ? localizations.editTodo : localizations.addTodo),
-        actions: [
-          if (isEdit)
-            IconButton(
-              key: Key(TodoKeys.deleteButton),
-              onPressed: () async {
-                await showDeleteDialog(context);
-              },
-              icon: const Icon(Icons.delete),
-            )
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
-        child: Form(
-          key: _key,
-          child: Column(
-            children: [
-              buildNameField(),
-              const SizedBox(height: 16),
-              buildPriorityField(),
-              const SizedBox(height: 32),
-              buildSaveButton(),
-            ],
+    return WillPopScope(
+      onWillPop: () async {
+        final willPop = await showDiscardDialog(context);
+        return willPop ?? false;
+      },
+      child: Scaffold(
+        key: Key(isEdit ? TodoKeys.editScreen : TodoKeys.addScreen),
+        appBar: AppBar(
+          title: Text(isEdit ? localizations.editTodo : localizations.addTodo),
+          actions: [
+            if (isEdit)
+              IconButton(
+                key: Key(TodoKeys.deleteButton),
+                onPressed: () async {
+                  await showDeleteDialog(context);
+                },
+                icon: const Icon(Icons.delete),
+              )
+          ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+          child: Form(
+            key: _key,
+            child: Column(
+              children: [
+                buildNameField(),
+                const SizedBox(height: 16),
+                buildPriorityField(),
+                const SizedBox(height: 32),
+                buildSaveButton(),
+              ],
+            ),
           ),
         ),
+      ),
+    );
+  }
+
+  Future<dynamic> showDiscardDialog(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(localizations.discardChanges),
+        content: Text(localizations.yourProgressWillBeLost),
+        actions: [
+          TextButton(
+            key: Key(TodoKeys.cancelButton),
+            onPressed: () => Navigator.of(context).pop<bool>(false),
+            child: Text(localizations.cancel),
+          ),
+          TextButton(
+            key: Key(TodoKeys.confirmButton),
+            onPressed: () => Navigator.of(context).pop<bool>(true),
+            child: Text(localizations.yes),
+          ),
+        ],
       ),
     );
   }
@@ -165,6 +193,7 @@ class AddEditTodoScreenState extends State<AddEditTodoScreen> {
       },
       decoration: InputDecoration(
         hintText: localizations.name,
+        // border: InputBorder.none,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
       ),
     );
