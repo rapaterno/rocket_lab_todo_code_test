@@ -1,4 +1,4 @@
-# Generate Coverage Report
+# Generate Coverage Report with unit, widget and integration tests
 run-tests: 
 	flutter pub get
 	mkdir -p coverage/unit && flutter test test --coverage coverage/unit

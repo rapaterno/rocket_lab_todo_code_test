@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:rocket_lab_todo_code_test/data/model/todo/todo.dart';
 import 'package:rocket_lab_todo_code_test/res/keys.dart';
+
+import '../test_utils.dart';
 
 class AddEditScreenTester {
   AddEditScreenTester(this.tester);
@@ -73,10 +76,10 @@ class AddEditScreenTester {
     await saveTodo();
   }
 
-  Future<void> createTodo(String name, [String? priority]) async {
+  Future<void> createTodo(String name, [TodoPriority? priority]) async {
     await enterName(name);
     if (priority != null) {
-      await changePriority(priority);
+      await changePriority(TestUtils.priorityString(priority));
     }
 
     await saveTodo();

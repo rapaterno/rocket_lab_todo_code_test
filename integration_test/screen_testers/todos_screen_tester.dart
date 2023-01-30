@@ -4,6 +4,8 @@ import 'package:rocket_lab_todo_code_test/data/repository/abstract_todo_reposito
 import 'package:rocket_lab_todo_code_test/presentation/widgets/todo_item_tile.dart';
 import 'package:rocket_lab_todo_code_test/res/keys.dart';
 
+import '../test_utils.dart';
+
 class TodoScreenTester {
   TodoScreenTester(this.tester);
   final WidgetTester tester;
@@ -32,10 +34,11 @@ class TodoScreenTester {
     expect(_todoItemTileFinder(name), findsNothing);
   }
 
-  Future<void> switchSortBy(String sortBy) async {
+  Future<void> switchSortBy(SortBy sortBy) async {
     await tester.tap(_sortByDropdownButtonFinder);
     await tester.pumpAndSettle();
-    await tester.tap(_sortByDropdownMenuItemFiner(sortBy).last);
+    await tester
+        .tap(_sortByDropdownMenuItemFiner(TestUtils.sortByString(sortBy)).last);
     await tester.pumpAndSettle();
   }
 

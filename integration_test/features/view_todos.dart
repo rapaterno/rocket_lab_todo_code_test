@@ -1,4 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:rocket_lab_todo_code_test/data/model/todo/todo.dart';
+import 'package:rocket_lab_todo_code_test/data/repository/abstract_todo_repository.dart';
 import 'package:rocket_lab_todo_code_test/data/services/database_service.dart';
 import 'package:rocket_lab_todo_code_test/main.dart' as app;
 import 'package:rocket_lab_todo_code_test/presentation/injector/injector.dart';
@@ -9,7 +11,7 @@ import '../screen_testers/todos_screen_tester.dart';
 class TodoTest {
   const TodoTest(this.name, this.priority);
   final String name;
-  final String priority;
+  final TodoPriority priority;
 }
 
 void main() {
@@ -18,39 +20,63 @@ void main() {
       DatabaseProvider.deleteTodoDatabase();
       injector.reset();
     });
+    group('Verify sort by todos is in proper order ', () {
+      const todos = [
+        TodoTest('name 3', TodoPriority.high),
+        TodoTest('name 2', TodoPriority.low),
+        TodoTest('name 1', TodoPriority.medium),
+      ];
 
-    testWidgets(
-      'Verify sort by todos is in proper order',
-      (tester) async {
-        app.main();
-
-        final todosScreen = TodoScreenTester(tester);
-        final addEditScreen = AddEditScreenTester(tester);
-
-        const todos = [
-          TodoTest('name 1', 'high'),
-          TodoTest('name 3', 'low'),
-          TodoTest('name 2', 'medium'),
-        ];
-
-        await todosScreen.verifyScreen();
-        await todosScreen.switchSortBy('priority');
-
-        for (var todo in todos) {
-          await todosScreen.tapAddButton();
-
-          await addEditScreen.createTodo(todo.name, todo.priority);
+      for (var sortBy in SortBy.values) {
+        List<String> names;
+        switch (sortBy) {
+          case SortBy.name:
+            names = [
+              todos[2].name,
+              todos[1].name,
+              todos[0].name,
+            ];
+            break;
+          case SortBy.createdAt:
+            names = [
+              todos[0].name,
+              todos[1].name,
+              todos[2].name,
+            ];
+            break;
+          case SortBy.priority:
+            names = [
+              todos[0].name,
+              todos[2].name,
+              todos[1].name,
+            ];
+            break;
         }
 
-        await todosScreen
-            .verifyOrderOfTodos([todos[0].name, todos[2].name, todos[1].name]);
+        testWidgets(
+          'sort by: $sortBy',
+          (tester) async {
+            app.main();
 
-        for (var todo in todos) {
-          await todosScreen.verifyTodoItemTile(todo.name);
-        }
-      },
-      tags: ['view_todos'],
-    );
+            final todosScreen = TodoScreenTester(tester);
+            final addEditScreen = AddEditScreenTester(tester);
+
+            await todosScreen.verifyScreen();
+            await todosScreen.switchSortBy(sortBy);
+
+            for (var todo in todos) {
+              await todosScreen.tapAddButton();
+
+              await addEditScreen.createTodo(todo.name, todo.priority);
+            }
+
+            await todosScreen.verifyOrderOfTodos(names);
+          },
+          tags: ['view_todos'],
+        );
+      }
+    });
+
     testWidgets(
       'Pull down to refresh does not cause any errors and still shows the same todos',
       (tester) async {
